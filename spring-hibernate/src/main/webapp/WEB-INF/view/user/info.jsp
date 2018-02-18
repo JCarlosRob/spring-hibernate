@@ -32,9 +32,16 @@
 		</tr>
 	</table>
 	
-	<form action="<%=request.getContextPath()%>/appLogout" method="POST">
+	<c:if test="${user.role.contains('ROLE_ADMIN')}">
+			<form action="${pageContext.request.contextPath}/admin/showAllUsers" method="get">
+				<input type="submit" value="Show all users" />
+			</form>	
+	</c:if>
+	
+	<form action="${pageContext.request.contextPath}/appLogout" method="POST">
 		<input type="submit" value="Logout" />
 		<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
 	</form>
+
 </body>
 </html>

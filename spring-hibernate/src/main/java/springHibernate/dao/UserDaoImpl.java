@@ -1,5 +1,10 @@
 package springHibernate.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Query;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +32,19 @@ public class UserDaoImpl implements UserDao {
 		
 		return user;
 	
+	}
+	
+	@Override
+	public List<User> getAllUsers() {
+		
+		Session session = sessionFactory.getCurrentSession();
+
+		Query query = session.createQuery("from User", User.class);
+		
+		List<User> users = query.getResultList();
+		
+		return users;
+		
 	}
 
 	@Override
