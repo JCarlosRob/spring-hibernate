@@ -1,0 +1,54 @@
+package springHibernate.dao;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import springHibernate.entity.Authoritie;
+import springHibernate.entity.User;
+
+@Repository
+@Transactional
+public class UserDaoImpl implements UserDao {
+	
+	@Autowired
+	private SessionFactory sessionFactory;
+	
+	@Override
+	public User getUser(String username) {
+
+		
+				
+		Session session = sessionFactory.getCurrentSession();
+		
+		User user = session.find(User.class, username);
+		
+		return user;
+	
+	}
+
+	@Override
+	public void save(User newUser) {
+
+		Session session = sessionFactory.getCurrentSession();
+		
+		Authoritie authoritie = new Authoritie();
+		authoritie.setUsername(newUser);
+		newUser.addRole(authoritie);
+		
+		session.save(newUser);
+		
+	}
+
+	@Override
+	public void delete(String username) {
+
+		Session session = sessionFactory.getCurrentSession();
+		User user = session.get(User.class, username);
+		session.delete(user);
+		
+	}
+
+}
