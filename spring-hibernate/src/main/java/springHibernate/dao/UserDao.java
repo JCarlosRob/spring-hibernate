@@ -10,7 +10,9 @@ public interface UserDao {
 	
 	List<User> getAllUsers();
 	
-	void save(User newUser);
+	void create(User newUser);
+	
+	void save(User user);
 	
 	void delete(String username);
 	

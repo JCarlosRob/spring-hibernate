@@ -36,8 +36,6 @@ public class User {
 	private List<Authoritie> roles;
 	
 	public User() {
-	
-		setEnabled(true);
 		
 	}
 	
@@ -99,8 +97,16 @@ public class User {
 
 	public void setRoles(List<Authoritie> roles) {
 		
-		this.roles = roles;
-	
+		for(Authoritie role: roles) {
+			
+			if(getRoles().contains(role) == false) {
+				
+				addRole(role);
+				
+			}
+			
+		}
+		
 	}
 	
 	public void addRole(Authoritie role) {

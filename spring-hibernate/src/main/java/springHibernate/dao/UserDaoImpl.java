@@ -1,6 +1,5 @@
 package springHibernate.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Query;
@@ -48,18 +47,28 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public void save(User newUser) {
+	public void create(User newUser) {
 
 		Session session = sessionFactory.getCurrentSession();
 		
 		Authoritie authoritie = new Authoritie();
 		authoritie.setUsername(newUser);
 		newUser.addRole(authoritie);
+		newUser.setEnabled(true);
 		
-		session.save(newUser);
+		session.saveOrUpdate(newUser);
 		
 	}
 
+	@Override
+	public void save(User user) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		
+		session.saveOrUpdate(user);
+		
+	}
+	
 	@Override
 	public void delete(String username) {
 

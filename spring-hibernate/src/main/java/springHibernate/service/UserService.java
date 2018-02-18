@@ -10,6 +10,8 @@ public interface UserService {
 
 	List<User> getAllUsers();
 	
+	void create(User user);
+	
 	void save(User newUser);
 
 	void delete(String username);

@@ -31,12 +31,18 @@
 			<td><c:out value="${user.role}" /></td>
 		</tr>
 	</table>
+
+	<c:url var="userEdit" value="edit">
+		<c:param name="username" value="${user.username }"></c:param>
+	</c:url>
 	
 	<c:if test="${user.role.contains('ROLE_ADMIN')}">
 			<form action="${pageContext.request.contextPath}/admin/showAllUsers" method="get">
 				<input type="submit" value="Show all users" />
 			</form>	
 	</c:if>
+	
+	<a type="button" href="${userEdit }">Edit</a>
 	
 	<form action="${pageContext.request.contextPath}/appLogout" method="POST">
 		<input type="submit" value="Logout" />
