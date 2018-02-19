@@ -41,10 +41,10 @@
 				<input type="submit" value="Show all users" />
 			</form>	
 	</c:if>
+		
+	<input type="submit" value="Edit my user" onclick="location.href='${userEdit }'" />
 	
-	<a type="button" href="${userEdit }">Edit</a>
-	
-	<form action="${pageContext.request.contextPath}/appLogout" method="POST">
+	<form action="${pageContext.request.contextPath}/appLogout" method="post">
 		<input type="submit" value="Logout" />
 		<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
 	</form>
