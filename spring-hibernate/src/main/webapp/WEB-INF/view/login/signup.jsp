@@ -23,7 +23,7 @@
 		<div class="col-4"></div>
 		<div id="form_sign" class="col-4">
 		
-			<form action="${pageContext.request.contextPath}/login/save" method="post" modelAttribute="newUser">
+			<form action="${pageContext.request.contextPath}/login/create" method="post" modelAttribute="newUser">
 			
 				<div class="row">
 					<div id="sigin_text" class=col-12>

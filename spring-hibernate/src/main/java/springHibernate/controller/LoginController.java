@@ -31,10 +31,10 @@ public class LoginController {
 		
 	}
 	
-	@PostMapping("/save")
+	@PostMapping("/create")
 	public String save(@ModelAttribute("newUser") User user) {
 
-		userService.save(user);
+		userService.create(user);
 		
 		return "redirect:/";
 		
