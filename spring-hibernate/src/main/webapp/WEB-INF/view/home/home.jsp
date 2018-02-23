@@ -17,13 +17,9 @@
     
     <jsp:include page="../includes/header.jsp"></jsp:include>
 
-      <div class="row">
-        <div id="space1" class="col-12"></div>
-      </div>
-
       <div id="content" class="row">
         <div class="col-2"></div>
-        <div id="ultimos" class="panel panel-default col-8">
+        <div class="panel panel-default col-8">
           <div id="titlePanel" class="panel-heading">
               <h3 class="panel-title">Last added</h3>
           </div>
@@ -40,7 +36,7 @@
 	              	<ul class="row">
 	              		<c:forEach items="${books }" var="book" begin="0" end="3">
 		              		<li class="col-3">                
-		              				 <img id="libro" class="d-block w-100" src="${book.img }">
+		              				 <img id="book" class="d-block w-100" src="${book.img }">
 	                    	</li>
                     	</c:forEach>
 	              	</ul>
@@ -50,7 +46,7 @@
                   <ul class="row">
 	              		<c:forEach items="${books }" var="book" begin="4" end="7">
 		              		<li class="col-3">                
-		              				 <img id="libro" class="d-block w-100" src="${book.img }">
+		              				 <img id="book" class="d-block w-100" src="${book.img }">
 	                    	</li>
                     	</c:forEach>
 	              	</ul>
@@ -59,7 +55,7 @@
                  	<ul class="row">
 	              		<c:forEach items="${books }" var="book" begin="0" end="3">
 		              		<li class="col-3">                
-		              				 <img id="libro" class="d-block w-100" src="${book.img }">
+		              				 <img id="book" class="d-block w-100" src="${book.img }">
 	                    	</li>
                     	</c:forEach>
 	              	</ul>
