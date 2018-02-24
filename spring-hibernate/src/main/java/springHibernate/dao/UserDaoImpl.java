@@ -52,8 +52,7 @@ public class UserDaoImpl implements UserDao {
 		Session session = sessionFactory.getCurrentSession();
 		
 		Authoritie authoritie = new Authoritie();
-		authoritie.setUsername(newUser);
-		newUser.addRole(authoritie);
+		//authoritie.setUsername(newUser);
 		newUser.setEnabled(true);
 		
 		session.saveOrUpdate(newUser);

@@ -1,11 +1,15 @@
 package springHibernate.entity;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -17,10 +21,13 @@ public class Authoritie {
 	@Column(name="id")
 	private int id;
 	
-	@ManyToOne(fetch=FetchType.EAGER,
+	@ManyToMany(fetch=FetchType.LAZY,
 			cascade= CascadeType.ALL)
-	@JoinColumn(name="username")
-	private User username;
+	@JoinTable(
+			name="user_authorities",
+			joinColumns=@JoinColumn(name="id_auth"),
+			inverseJoinColumns=@JoinColumn(name="username"))
+	private List<User> username;
 	
 	@Column(name="authority")
 	private String authority;
@@ -39,11 +46,11 @@ public class Authoritie {
 		this.id = id;
 	}
 
-	public User getUsername() {
+	public List<User> getUsername() {
 		return username;
 	}
 
-	public void setUsername(User username) {
+	public void setUsername(List<User> username) {
 		this.username = username;
 	}
 

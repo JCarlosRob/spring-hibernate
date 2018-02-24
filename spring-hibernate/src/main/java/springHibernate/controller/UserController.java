@@ -36,8 +36,9 @@ public class UserController {
 	}
 	
 	@GetMapping("/edit")
-	public String edit(@RequestParam("username") String username,
-						Model model) {
+	public String edit(Model model) {
+		
+		String username = SecurityContextHolder.getContext().getAuthentication().getName();
 		
 		User user = userService.getDataByUserName(username);
 		

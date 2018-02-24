@@ -13,20 +13,28 @@ CREATE TABLE `users` (
   	PRIMARY KEY (`username`),
   	UNIQUE KEY `email_unique` (`email`)
   
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 DROP TABLE IF EXISTS `authorities`;
 CREATE TABLE `authorities` (
 
   	`id` int(10) NOT NULL,
-  	`username` varchar(50) NOT NULL,
   	`authority` varchar(50) NOT NULL,
-  	PRIMARY KEY (`id`),
-  	UNIQUE KEY `authorities_unique` (`username`,`authority`),
-  	KEY `authorities_fk` (`username`),
-  	CONSTRAINT `authorities_fk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
+  	PRIMARY KEY (`id`)
 
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
+
+DROP TABLE IF EXISTS `user_authorities`;
+CREATE TABLE `user_authorities`(
+
+	`username` varchar(50) NOT NULL,
+    `id_auth` int(10) NOT NULL,
+    
+    PRIMARY KEY (`username`, `id_auth`),
+    FOREIGN KEY (username) REFERENCES users (username),
+    FOREIGN KEY (id_auth) REFERENCES authorities (id)
+
+);
 
 DROP TABLE IF EXISTS `books`;
 CREATE TABLE `books`(
@@ -39,7 +47,7 @@ CREATE TABLE `books`(
     
     PRIMARY KEY (`id`)
 
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 --
 -- password test123
@@ -50,10 +58,14 @@ INSERT INTO `users` VALUES
 ('susan','$2a$04$ejcASFNDYvvCS2.NuGGPP.KjB6dd1bG/ZCYkvph6u4k1nVs/3lD2O','susan@myemail.com',1);
 
 INSERT INTO `authorities` VALUES 
-(1,'john','ROLE_USER'),
-(2,'mary','ROLE_USER'),
-(4,'susan','ROLE_USER'),
-(5,'susan','ROLE_ADMIN');
+(1,'ROLE_USER'),
+(2,'ROLE_ADMIN');
+
+INSERT INTO `user_authorities` VALUES
+('john', 1),
+('mary',1),
+('susan',1),
+('susan',2);
 
 INSERT INTO `books` VALUES
 (1, 'Angeles y demonios', 'Dan Brown', '2018-02-22','resources/img/angeles_y_demonios.jpg'),

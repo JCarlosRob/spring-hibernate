@@ -32,9 +32,7 @@
 		</tr>
 	</table>
 
-	<c:url var="userEdit" value="edit">
-		<c:param name="username" value="${user.username }"></c:param>
-	</c:url>
+	<c:url var="userEdit" value="edit" />
 	
 	<c:if test="${user.role.contains('ROLE_ADMIN')}">
 			<form action="${pageContext.request.contextPath}/admin/showAllUsers" method="get">

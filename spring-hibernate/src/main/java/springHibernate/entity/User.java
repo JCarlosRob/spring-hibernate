@@ -8,7 +8,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -30,9 +32,12 @@ public class User {
 	@Column(name="enabled", columnDefinition="tinyint")
 	private boolean enabled;
 	
-	@OneToMany(fetch = FetchType.EAGER,
-			mappedBy = "username",
+	@ManyToMany(fetch = FetchType.LAZY,
 			cascade = CascadeType.ALL)
+	@JoinTable(
+			name="user_authorities",
+			joinColumns=@JoinColumn(name="username"),
+			inverseJoinColumns=@JoinColumn(name="id_auth"))
 	private List<Authoritie> roles;
 	
 	public User() {
