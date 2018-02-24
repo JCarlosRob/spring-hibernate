@@ -53,7 +53,7 @@
                 </div>
                 <div class="carousel-item">
                  	<ul class="row">
-	              		<c:forEach items="${books }" var="book" begin="0" end="3">
+	              		<c:forEach items="${books }" var="book" begin="8" end="11">
 		              		<li class="col-3">                
 		              				 <img id="book" class="d-block w-100" src="${book.img }">
 	                    	</li>

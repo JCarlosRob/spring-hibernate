@@ -66,34 +66,3 @@
     <script src="<c:url value="/resources/js/bootstrap.min.js"></c:url>" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
-
-<!--  
-
-<html>
-<head>
-</head>
-<body>
-	<h3>Sign In</h3>
-	<form:form action="${pageContext.request.contextPath}/login/save" method="post" modelAttribute="newUser">
-		<table>
-			<tr>
-				<td>username</td>
-				<td><form:input type="text" path="username" /></td>
-			</tr>
-			<tr>
-				<td>email</td>
-				<td><form:input type="text" path="email" /></td>
-			</tr>
-			<tr>
-				<td>password</td>
-				<td><form:input type="password" path="password" /></td>
-			</tr>
-		</table>
-		<br/>
-		<button type="submit" >Sign in</button>
-		
-	</form:form>
-</body>
-</html>
-
--->
