@@ -21,7 +21,7 @@ public class Authoritie {
 	@Column(name="id")
 	private int id;
 	
-	@ManyToMany(fetch=FetchType.LAZY,
+	@ManyToMany(fetch=FetchType.EAGER,
 			cascade= CascadeType.ALL)
 	@JoinTable(
 			name="user_authorities",

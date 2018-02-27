@@ -32,7 +32,7 @@ public class User {
 	@Column(name="enabled", columnDefinition="tinyint")
 	private boolean enabled;
 	
-	@ManyToMany(fetch = FetchType.LAZY,
+	@ManyToMany(fetch = FetchType.EAGER,
 			cascade = CascadeType.ALL)
 	@JoinTable(
 			name="user_authorities",
