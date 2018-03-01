@@ -8,14 +8,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="resources/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="resources/css/index.css">
+    <link rel="stylesheet" href="resources/css/bootstrap/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/index.css"></c:url>">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/header.css"></c:url>">
+    
+    
 
     <title>Spring-Hibernate</title>
   </head>
   <body>
     
-    <jsp:include page="../includes/header.jsp"></jsp:include>
+ 		<c:choose>
+        
+        	<c:when test="${pageContext.request.userPrincipal.name == null}">
+        		<jsp:include page="../includes/header_nologin.jsp"></jsp:include>
+        	</c:when>
+        	<c:otherwise>
+        		  <jsp:include page="../includes/header_login.jsp"></jsp:include>
+        	</c:otherwise>
+        
+        </c:choose>
 
       <div id="content" class="row">
         <div class="col-2"></div>
@@ -81,6 +93,6 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="resources/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="resources/js/bootstrap/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>

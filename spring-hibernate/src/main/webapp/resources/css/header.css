@@ -1,0 +1,29 @@
+@font-face{
+
+	font-family: "indie-flower";
+	src: url(../font/IndieFlower.ttf);
+
+}
+
+.navbar{
+
+	background-color: #c0c2c3 !important;
+
+}
+
+#title{
+	
+	font-family: "indie-flower", Arial;
+	font-weight: 700;
+	font-size: 32px;
+
+	background: #d4ff71;
+
+}
+
+#logout{
+	
+	border: 0;
+	background: #c0c2c3;
+	
+}

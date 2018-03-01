@@ -16,7 +16,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @EnableWebMvc
 @ComponentScan("springHibernate")
-@PropertySource("resources/properties/app.properties")
+@PropertySource("classpath:app.properties")
 public class AppConfig implements WebMvcConfigurer {
 
 	@Autowired

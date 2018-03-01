@@ -21,7 +21,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource("resources/properties/app.properties")
+@PropertySource("classpath:app.properties")
 public class HibernateConfig {
 
 	@Autowired
