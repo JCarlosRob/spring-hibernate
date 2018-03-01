@@ -19,7 +19,7 @@ public class HomeController {
 	@RequestMapping("/")
 	public String showHome(Model model) {
 		
-		List<Book> books = bookService.getAllBooks();
+		List<Book> books = bookService.getLastAdded(12);
 		
 		model.addAttribute("books", books);
 		

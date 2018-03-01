@@ -8,4 +8,6 @@ public interface BookDao {
 
 	List<Book> getAllBooks();
 	
+	List<Book> getLastAdded(int quantity);
+	
 }

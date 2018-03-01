@@ -18,7 +18,7 @@ CREATE TABLE `users` (
 DROP TABLE IF EXISTS `authorities`;
 CREATE TABLE `authorities` (
 
-  	`id` int(10) NOT NULL,
+  	`id` int(10) NOT NULL AUTO_INCREMENT,
   	`authority` varchar(50) NOT NULL,
   	PRIMARY KEY (`id`)
 
@@ -39,7 +39,7 @@ CREATE TABLE `user_authorities`(
 DROP TABLE IF EXISTS `books`;
 CREATE TABLE `books`(
 
-	`id` int(10) NOT NULL,
+	`id` int(10) NOT NULL AUTO_INCREMENT,
     `title` varchar(100) NOT NULL,
     `author` varchar(100) NOT NULL,
     `dateAdd` date NOT NULL,
@@ -68,15 +68,15 @@ INSERT INTO `user_authorities` VALUES
 ('susan',2);
 
 INSERT INTO `books` VALUES
-(1, 'Angeles y demonios', 'Dan Brown', '2018-02-22','resources/img/angeles_y_demonios.jpg'),
-(2, 'La biblia de los caidos', 'Fernando Trujillo', '2018-02-22','resources/img/biblia_de_los_caidos.jpg'),
-(3, 'Clan del oso cavernario', 'Jean M. Auel', '2018-02-22','resources/img/clan_del_oso_cavernario.jpg'),
-(4, 'El guardian invisible', 'Dolores Redondo', '2018-02-22','resources/img/el_guardian_invisible.jpg'),
-(5, 'El psicoanalista', 'John Katzenbath', '2018-02-22','resources/img/el_psicoanalista.jpg'),
-(6, 'Historias de Terramar I', 'Ursula K. Le Guin', '2018-02-22','resources/img/historias_de_terramar.jpg'),
-(7, 'La chica del tren', 'Paula Hawkins', '2018-02-22','resources/img/la_chica_del_tren.jpg'),
-(8, 'Trece runas', 'Michael Peinkofer', '2018-02-22','resources/img/las_trece_runas.jpg'),
-(9, 'Los pilares de la tierra', 'Ken Follett', '2018-02-22','resources/img/los_pilares_de_la_tierra.jpg'),
-(10, 'Ready player one', 'Ernest cline', '2018-02-22','resources/img/ready_player_one.jpg'),
-(11, 'El ultimo deseo', 'Andrzej Sapkowski', '2018-02-22','resources/img/ultimo_deseo.jpg'),
-(12, 'Una columna de fuego', 'Ken Follett', '2018-02-22','resources/img/una_columna_de_fuego.jpg');
+(1, 'Angeles y demonios', 'Dan Brown', '2018-02-01','resources/img/angeles_y_demonios.jpg'),
+(2, 'La biblia de los caidos', 'Fernando Trujillo', '2018-02-02','resources/img/biblia_de_los_caidos.jpg'),
+(3, 'Clan del oso cavernario', 'Jean M. Auel', '2018-02-03','resources/img/clan_del_oso_cavernario.jpg'),
+(4, 'El guardian invisible', 'Dolores Redondo', '2018-02-04','resources/img/el_guardian_invisible.jpg'),
+(5, 'El psicoanalista', 'John Katzenbath', '2018-02-05','resources/img/el_psicoanalista.jpg'),
+(6, 'Historias de Terramar I', 'Ursula K. Le Guin', '2018-02-06','resources/img/historias_de_terramar.jpg'),
+(7, 'La chica del tren', 'Paula Hawkins', '2018-02-07','resources/img/la_chica_del_tren.jpg'),
+(8, 'Trece runas', 'Michael Peinkofer', '2018-02-08','resources/img/las_trece_runas.jpg'),
+(9, 'Los pilares de la tierra', 'Ken Follett', '2018-02-09','resources/img/los_pilares_de_la_tierra.jpg'),
+(10, 'Ready player one', 'Ernest cline', '2018-02-10','resources/img/ready_player_one.jpg'),
+(11, 'El ultimo deseo', 'Andrzej Sapkowski', '2018-02-11','resources/img/ultimo_deseo.jpg'),
+(12, 'Una columna de fuego', 'Ken Follett', '2018-02-12','resources/img/una_columna_de_fuego.jpg');

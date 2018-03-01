@@ -32,4 +32,18 @@ public class BookDaoImpl implements BookDao {
 	
 	}
 
+	@Override
+	public List<Book> getLastAdded(int quantity) {
+
+		Session session = sessionFactory.getCurrentSession();
+		
+		Query query = session.createQuery("from Book order by dateAdd desc", Book.class);
+		query.setMaxResults(quantity);
+		
+		List<Book> lastAdded = query.getResultList();
+		
+		return lastAdded;
+	
+	}
+
 }

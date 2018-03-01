@@ -21,4 +21,11 @@ public class BooksServiceImpl implements BookService{
 	
 	}
 
+	@Override
+	public List<Book> getLastAdded(int quantity) {
+
+		return bookDao.getLastAdded(quantity);
+	
+	}
+
 }
