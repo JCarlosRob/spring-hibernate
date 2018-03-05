@@ -1,0 +1,11 @@
+#notification{
+	
+	border: solid;
+	border-color: #c0c2c3;
+	
+	border-top-right-radius: 50px;
+	border-top-left-radius: 50px;
+	border-bottom-right-radius: 50px;
+	border-bottom-left-radius: 50px; 
+	
+}
