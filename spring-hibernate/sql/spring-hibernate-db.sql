@@ -40,8 +40,8 @@ CREATE TABLE `user_authorities`(
 
 )ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS `genre`;
-CREATE TABLE `genre`(
+DROP TABLE IF EXISTS `genres`;
+CREATE TABLE `genres`(
 
 	`id` int(10) NOT NULL AUTO_INCREMENT,
     `genre` varchar(50) NOT NULL,
@@ -56,11 +56,13 @@ DROP TABLE IF EXISTS `authors`;
 CREATE TABLE `authors`(
 
 	`id` int(10) NOT NULL AUTO_INCREMENT,
-    `author` varchar(100) NOT NULL,
+    `author_name` varchar(100) NOT NULL,
+    `birthday` date,
+    `bibliography` varchar(10000),
     
     PRIMARY KEY (id),
     
-    UNIQUE KEY author_unique (author)
+    UNIQUE KEY author_unique (author_name)
 
 )ENGINE=InnoDB AUTO_INCREMENT=1;
 
@@ -83,7 +85,7 @@ CREATE TABLE `books`(
     PRIMARY KEY (id),
     
     FOREIGN KEY (uploaded_by) REFERENCES users(username),
-    FOREIGN KEY (id_genre) REFERENCES genre(id),
+    FOREIGN KEY (id_genre) REFERENCES genres(id),
     
     UNIQUE KEY isbn_unique (isbn)
 
@@ -102,11 +104,12 @@ CREATE TABLE `authors_books`(
 
 )ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS `desired_books`;
-CREATE TABLE `desired_books`(
+DROP TABLE IF EXISTS `wishlist`;
+CREATE TABLE `wishlist`(
 
 	`username` varchar(50) NOT NULL,
     `id_book` int(10) NOT NULL,
+    `date` date NOT NULL,
     
     PRIMARY KEY (username, id_book),
     
@@ -115,34 +118,37 @@ CREATE TABLE `desired_books`(
 
 )ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS `acquired_books`;
-CREATE TABLE `acquired_books`(
+DROP TABLE IF EXISTS `owned_books`;
+CREATE TABLE `owned_books`(
 	
-	`username` varchar(50) NOT NULL,
+    `id` int(10) AUTO_INCREMENT,
     `id_book` int(10) NOT NULL,
-    `state_reading` varchar(20) NOT NULL,
+    `username` varchar(50) NOT NULL,
+    `state_reading` varchar(50) NOT NULL,
+    `date` date NOT NULL,
     
-    PRIMARY KEY (username, id_book),
+    PRIMARY KEY (id),
     
-    FOREIGN KEY (username) REFERENCES users (username),
+    FOREIGN KEY (username) REFERENCES users(username),
     FOREIGN KEY (id_book) REFERENCES books (id)
 
-)ENGINE=InnoDB;
+)ENGINE=InnoDB AUTO_INCREMENT=1;
 
-DROP TABLE IF EXISTS `borrowed_books`;
-CREATE TABLE `borrowed_books`(
+DROP TABLE IF EXISTS `loans_borrowed_books`;
+CREATE TABLE `loans_borrowed_books`(
 	
+    `id` int(10) AUTO_INCREMENT,
 	`username` varchar(50) NOT NULL,
-    `id_book` int(10) NOT NULL,
-    `name_person_borrowed` varchar(50) NOT NULL,
-    `state_reading` varchar(20) NOT NULL,
+    `id_owned_book` int(10) NOT NULL,
+    `state_reading` varchar(50) NOT NULL,
+    `date` date NOT NULL,
     
-    PRIMARY KEY (username, id_book),
+    PRIMARY KEY (id),
     
     FOREIGN KEY (username) REFERENCES users (username),
-    FOREIGN KEY (id_book) REFERENCES books (id)
+    FOREIGN KEY (id_owned_book) REFERENCES owned_books (id)
 
-)ENGINE=InnoDB;
+)ENGINE=InnoDB AUTO_INCREMENT=1;
 
 --
 -- password test123
@@ -162,7 +168,7 @@ INSERT INTO `user_authorities` VALUES
 ('susan',1),
 ('susan',2);
 
-INSERT INTO `genre` VALUES
+INSERT INTO `genres` VALUES
 (1, 'Thriller'),
 (2, 'Romántica'),
 (3, 'Aventura'),
@@ -315,17 +321,17 @@ Entretanto, Ned Willard busca a Jean Langlais, un personaje escu... Leer resumen
 'resources/img/una_columna_de_fuego.jpg');
 
 INSERT INTO `authors` VALUES
-(1, 'Dan Brown'),
-(2, 'Fernando Trujillo'),
-(3, 'Jean M. Auel'),
-(4, 'Dolores Redondo'),
-(5, 'John Katzenbath'),
-(6, 'Ursula K. Le Guin'),
-(7, 'Paula Hawkins'),
-(8, 'Michael Peinkofer'),
-(9, 'Ken Follett'),
-(10, 'Ernest cline'),
-(11, 'Andrzej Sapkowski');
+(1, 'Dan Brown', '1111-11-11', ''),
+(2, 'Fernando Trujillo', '1111-11-11', ''),
+(3, 'Jean M. Auel', '1111-11-11', ''),
+(4, 'Dolores Redondo', '1111-11-11', ''),
+(5, 'John Katzenbath', '1111-11-11', ''),
+(6, 'Ursula K. Le Guin', '1111-11-11', ''),
+(7, 'Paula Hawkins', '1111-11-11', ''),
+(8, 'Michael Peinkofer', '1111-11-11', ''),
+(9, 'Ken Follett', '1111-11-11', ''),
+(10, 'Ernest cline', '1111-11-11', ''),
+(11, 'Andrzej Sapkowski', '1111-11-11', '');
 
 INSERT INTO `authors_books` VALUES
 (1,1),
