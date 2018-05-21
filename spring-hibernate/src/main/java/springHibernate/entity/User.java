@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -39,7 +40,20 @@ public class User {
 			joinColumns=@JoinColumn(name="username"),
 			inverseJoinColumns=@JoinColumn(name="id_auth"))
 	private List<Authoritie> roles;
+
+	@OneToMany(mappedBy="user",
+				cascade=CascadeType.ALL)
+	private List<OwnedBooks> ownedBooks;
+
+	@OneToMany(mappedBy="user",
+			    cascade=CascadeType.ALL)
+	private List<LoansBorrowedBooks> loansBorrowedBooks;
 	
+	@OneToMany(mappedBy="uploadedBy",
+			 	cascade={CascadeType.DETACH, CascadeType.MERGE,
+			 			CascadeType.PERSIST, CascadeType.REFRESH})
+	private List<Book> booksUploaded;
+
 	public User() {
 		
 	}
@@ -125,5 +139,29 @@ public class User {
 		this.roles.add(role);
 		
 	}
-	
+
+	public List<OwnedBooks> getOwnedBooks() {
+		return ownedBooks;
+	}
+
+	public void setOwnedBooks(List<OwnedBooks> ownedBooks) {
+		this.ownedBooks = ownedBooks;
+	}
+
+	public List<LoansBorrowedBooks> getLoansBorrowedBooks() {
+		return loansBorrowedBooks;
+	}
+
+	public void setLoansBorrowedBooks(List<LoansBorrowedBooks> loansBorrowedBooks) {
+		this.loansBorrowedBooks = loansBorrowedBooks;
+	}
+
+	public List<Book> getBooksUploaded() {
+		return booksUploaded;
+	}
+
+	public void setBooksUploaded(List<Book> booksUploaded) {
+		this.booksUploaded = booksUploaded;
+	}
+
 }

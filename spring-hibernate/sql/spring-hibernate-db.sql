@@ -107,11 +107,12 @@ CREATE TABLE `authors_books`(
 DROP TABLE IF EXISTS `wishlist`;
 CREATE TABLE `wishlist`(
 
+	`id` int(10) NOT NULL,
 	`username` varchar(50) NOT NULL,
     `id_book` int(10) NOT NULL,
     `date` date NOT NULL,
     
-    PRIMARY KEY (username, id_book),
+    PRIMARY KEY (id),
     
     FOREIGN KEY (username) REFERENCES users (username),
     FOREIGN KEY (id_book) REFERENCES books (id)
@@ -138,14 +139,14 @@ DROP TABLE IF EXISTS `loans_borrowed_books`;
 CREATE TABLE `loans_borrowed_books`(
 	
     `id` int(10) AUTO_INCREMENT,
-	`username` varchar(50) NOT NULL,
+	`id_user` varchar(50) NOT NULL,
     `id_owned_book` int(10) NOT NULL,
     `state_reading` varchar(50) NOT NULL,
     `date` date NOT NULL,
     
     PRIMARY KEY (id),
     
-    FOREIGN KEY (username) REFERENCES users (username),
+    FOREIGN KEY (id_user) REFERENCES users (username),
     FOREIGN KEY (id_owned_book) REFERENCES owned_books (id)
 
 )ENGINE=InnoDB AUTO_INCREMENT=1;
