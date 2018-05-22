@@ -1,14 +1,18 @@
 package springHibernate.entity;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -38,10 +42,17 @@ public class Book {
 	
 	@Column(name="publishing_year")
 	private int publishingYear;
-/*	
+
+	@ManyToMany(
+			cascade = {CascadeType.DETACH, CascadeType.MERGE,
+					CascadeType.PERSIST, CascadeType.REFRESH})
+	@JoinTable(
+			name="genre_books",
+			joinColumns=@JoinColumn(name="id_book"),
+			inverseJoinColumns=@JoinColumn(name="id_genre"))
 	@Column(name="id_genre")
-	private Genre genre;
-*/	
+	private List<Genre> genre;
+	
 	@Column(name="publishing_country")
 	private String publishingCountry;
 	
@@ -88,19 +99,15 @@ public class Book {
 		this.title = title;
 		
 	}
-/*
-	public List<Author> getAuthors() {
-		
-		return authors;
-	
+
+	public List<Genre> getGenre() {
+		return genre;
 	}
 
-	public void setAuthors(List<Author> authors) {
-		
-		this.authors = authors;
-	
+	public void setGenre(List<Genre> genre) {
+		this.genre = genre;
 	}
-*/
+
 	public String getSynopsis() {
 		
 		return synopsis;
