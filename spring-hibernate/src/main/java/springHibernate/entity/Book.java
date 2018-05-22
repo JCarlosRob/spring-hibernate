@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,16 +26,15 @@ public class Book {
 	
 	@Column(name="title")
 	private String title;
-/*	
-	@ManyToMany(fetch = FetchType.EAGER,
-			cascade = {CascadeType.DETACH, CascadeType.MERGE,
+	
+	@ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE,
 					CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinTable(
 			name="authors_books",
 			joinColumns=@JoinColumn(name="id_book"),
 			inverseJoinColumns=@JoinColumn(name="id_author"))
 	private List<Author> authors;
-*/	
+
 	@Column(name="synopsis")
 	private String synopsis;
 	
@@ -131,19 +129,7 @@ public class Book {
 		this.publishingYear = publishingYear;
 	
 	}
-/*
-	public Genre getGenre() {
-		
-		return genre;
-		
-	}
 
-	public void setGenre(Genre genre) {
-		
-		this.genre = genre;
-	
-	}
-*/
 	public String getPublishingCountry() {
 		
 		return publishingCountry;
