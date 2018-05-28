@@ -12,8 +12,6 @@
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/index.css"></c:url>">
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/header.css"></c:url>">
     
-    
-
     <title>Spring-Hibernate</title>
   </head>
   <body>
@@ -47,8 +45,11 @@
                 <div class="carousel-item active">
 	              	<ul class="row">
 	              		<c:forEach items="${books }" var="book" begin="0" end="3">
-		              		<li class="col-3">                
+		              		<li class="col-3">
+		              			<a href="book/show?idBook=${book.id }">            
 		              				 <img id="book" class="d-block w-100" src="${book.img }">
+		              			</a>
+		              				 
 	                    	</li>
                     	</c:forEach>
 	              	</ul>
@@ -56,18 +57,22 @@
                 
                 <div class="carousel-item">
                   <ul class="row">
-	              		<c:forEach items="${books }" var="book" begin="4" end="7">
-		              		<li class="col-3">                
+	              		<c:forEach items="${books }" var="book" begin="4" end="7">	              		
+		              		<li class="col-3">      
+		              			<a href="book/show?idBook=${book.id }">            
 		              				 <img id="book" class="d-block w-100" src="${book.img }">
+		              			</a>
 	                    	</li>
                     	</c:forEach>
 	              	</ul>
                 </div>
                 <div class="carousel-item">
                  	<ul class="row">
-	              		<c:forEach items="${books }" var="book" begin="8" end="11">
-		              		<li class="col-3">                
+	              		<c:forEach items="${books }" var="book" begin="8" end="11">		
+		              		<li class="col-3">            
+		              			<a href="book/show?idBook=${book.id }">            
 		              				 <img id="book" class="d-block w-100" src="${book.img }">
+		              			</a>
 	                    	</li>
                     	</c:forEach>
 	              	</ul>
